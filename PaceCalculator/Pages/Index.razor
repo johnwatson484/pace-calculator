@@ -2,17 +2,41 @@
 
 <PageTitle>Pace Calculator</PageTitle>
 
-<h1>Pace Calculator</h1>
+<h3>Pace Calculator</h3>
 
-<p role="status">Current count: @currentCount</p>
+<div class="row">
+    <div class="col-md-3">
+        <label for="distance" class="form-label">Distance</label>
+        <div class="input-group mb-3">
+            <input type="number" class="form-control" id="distance">
+            <span class="input-group-text">miles</span>
+        </div>
+        <label class="form-label">Target time</label>
+        <div class="input-group mb-3">
+            <input type="number" class="form-control" id="hours">
+            <span class="input-group-text">hours</span>
+            <input type="text" class="form-control" id="minutes">
+            <span class="input-group-text">minutes</span>
+        </div>
+        <button class="btn btn-primary" @onclick="CalculatePace">Calculate pace</button>
+    </div>
+</div>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<div class="row" style="margin-top: 20px;">
+    <div class="col-md-3">
+        <label for="pace" class="form-label">Pace</label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" id="pace" value="@pace">
+            <span class="input-group-text">min/mile</span>
+        </div>
+    </div>
+</div>
 
 @code {
-    private int currentCount = 0;
+    private string pace = string.Empty;
 
-    private void IncrementCount()
+    private void CalculatePace()
     {
-        currentCount++;
+        pace = "Hi";
     }
 }
