@@ -8,14 +8,14 @@
     <div class="col-md-3">
         <label for="distance" class="form-label">Distance</label>
         <div class="input-group mb-3">
-            <input type="number" class="form-control" id="distance">
+            <input type="number" class="form-control" id="distance" @bind="distance">
             <span class="input-group-text">miles</span>
         </div>
         <label class="form-label">Target time</label>
         <div class="input-group mb-3">
-            <input type="number" class="form-control" id="hours">
+            <input type="text" pattern="[0-9]+" class="form-control" id="hours" @bind="hours">
             <span class="input-group-text">hours</span>
-            <input type="text" class="form-control" id="minutes">
+            <input type="text" pattern="[0-9]+" class="form-control" id="minutes" @bind="minutes">
             <span class="input-group-text">minutes</span>
         </div>
         <button class="btn btn-primary" @onclick="CalculatePace">Calculate pace</button>
@@ -33,10 +33,18 @@
 </div>
 
 @code {
+    private double? distance;
+    private int? hours;
+    private int? minutes;
     private string pace = string.Empty;
 
     private void CalculatePace()
     {
-        pace = "Hi";
+        if(hours.HasValue && minutes.HasValue && distance.HasValue && distance > 0)
+        {
+            var time = new TimeSpan(hours.Value, minutes.Value, 0);
+            var pacePerMile = TimeSpan.FromMinutes(time.TotalMinutes / distance.Value);
+            pace = pacePerMile.ToString(@"hh\:mm\:ss");
+        }
     }
 }
