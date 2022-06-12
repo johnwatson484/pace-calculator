@@ -1,0 +1,5 @@
+version: '3.8'
+services:
+  pace-calculator:
+    ports:
+    - "5000:80"

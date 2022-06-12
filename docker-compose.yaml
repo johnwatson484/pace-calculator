@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  pace-calculator:
+    build:
+      context: .
+      target: production
+    image: pace-calculator
+    container_name: pace-calculator
