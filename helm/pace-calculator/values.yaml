@@ -1,0 +1,30 @@
+environment: development
+name: pace-calculator
+image: pace-calculator
+
+service:
+  port: 80
+
+container:
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+  imagePullPolicy: Always
+  requestMemory: 40Mi
+  requestCpu: 40m
+  limitMemory: 40Mi
+  limitCpu: 40m
+  port: 80
+
+ingress:
+  class: nginx
+  host:
+  certIssuer: letsencrypt
+
+deployment:
+  restartPolicy: Always
+  replicas: 1
+  minReadySeconds: 5
+  redeployOnChange: update this field to force a change
+  imagePullSecret:
+  runAsNonRoot: true
+  runAsUser: 1000

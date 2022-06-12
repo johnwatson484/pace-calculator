@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+  name: {{ quote .Values.name }}
+  labels: {{ include "pace-calculator.labels" . | trimSuffix "\n" | indent 2 }}
+spec:
+  ports:
+  - name: http
+    port: {{ .Values.service.port }}
+    targetPort: {{ .Values.container.port }}
+  selector:
+    app.kubernetes.io/name: {{ quote .Values.name }}
+  type: {{ quote .Values.service.type }}
