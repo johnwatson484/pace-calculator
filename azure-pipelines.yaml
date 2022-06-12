@@ -1,0 +1,18 @@
+trigger:
+  - main
+
+pr: none
+
+resources:
+  repositories:
+  - repository: templates
+    type: github
+    endpoint: John D Watson
+    name: johnwatson484/azure-devops-templates
+
+extends:
+  template: build.yaml@templates
+  parameters:
+    repo: pace-calculator
+    project: PaceCalculator
+    framework: net
