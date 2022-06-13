@@ -16,4 +16,3 @@ extends:
     repo: pace-calculator
     project: PaceCalculator
     framework: net
-    sonarcloud: false
