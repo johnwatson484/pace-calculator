@@ -17,17 +17,7 @@ spec:
         redeployOnChange: {{ quote .Values.deployment.redeployOnChange }}
     spec:
       volumes:
-      - name: temp-client
-        emptyDir: {}
-      - name: temp-proxy
-        emptyDir: {}
-      - name: temp-fastcgi
-        emptyDir: {}
-      - name: temp-uwsgi
-        emptyDir: {}
-      - name: temp-scgi
-        emptyDir: {}
-      - name: temp-run
+      - name: temp-dir
         emptyDir: {}
       securityContext:
         runAsUser: {{ .Values.deployment.runAsUser }}
@@ -50,18 +40,8 @@ spec:
           name: http
           protocol: TCP
         volumeMounts:
-        - mountPath: /var/cache/nginx/client_temp
-          name: temp-client
-        - mountPath: /var/cache/nginx/proxy_temp
-          name: temp-proxy
-        - mountPath: /var/cache/nginx/fastcgi_temp
-          name: temp-fastcgi
-        - mountPath: /var/cache/nginx/uwsgi_temp
-          name: temp-uwsgi
-        - mountPath: /var/cache/nginx/scgi_temp
-          name: temp-scgi
-        - mountPath: /var/run
-          name: temp-run
+        - mountPath: /tmp
+          name: temp-dir
         resources:
           requests:
             memory: {{ quote .Values.container.requestMemory }}
