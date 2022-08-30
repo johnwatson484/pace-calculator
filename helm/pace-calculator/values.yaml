@@ -13,7 +13,7 @@ container:
   requestCpu: 40m
   limitMemory: 40Mi
   limitCpu: 40m
-  port: 80
+  port: 8080
 
 ingress:
   class: nginx

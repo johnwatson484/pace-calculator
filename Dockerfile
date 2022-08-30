@@ -15,7 +15,7 @@ RUN dotnet restore ./PaceCalculator/PaceCalculator.csproj
 COPY --chown=dotnet:dotnet ./PaceCalculator/ ./PaceCalculator/
 RUN dotnet publish ./PaceCalculator/ -c Release -o /home/dotnet/out
 
-FROM nginx:alpine AS production
+FROM nginxinc/nginx-unprivileged:1-alpine AS production
 
 WORKDIR /usr/share/nginx/html
 COPY --from=development /home/dotnet/out/wwwroot .
