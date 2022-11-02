@@ -1,4 +1,3 @@
-environment: development
 name: pace-calculator
 image: pace-calculator
 

@@ -9,10 +9,15 @@ resources:
     type: github
     endpoint: John D Watson
     name: johnwatson484/azure-devops-templates
+    ref: refs/tags/1
 
 extends:
   template: build.yaml@templates
   parameters:
-    repo: pace-calculator
+    name: pace-calculator
     project: PaceCalculator
     framework: net
+    deploy: true
+    namespace: pace-calculator
+    hasSecureHelmValuesFile: true
+

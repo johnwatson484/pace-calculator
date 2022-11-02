@@ -30,11 +30,6 @@ spec:
         securityContext:
           readOnlyRootFilesystem: {{ .Values.container.readOnlyRootFilesystem }}
           allowPrivilegeEscalation: {{ .Values.container.allowPrivilegeEscalation }}
-        env:
-        - name: NODE_ENV
-          value: {{ quote .Values.environment }}
-        - name: PORT
-          value: {{ quote .Values.container.port }}
         ports:
         - containerPort: {{ .Values.container.port }}
           name: http
