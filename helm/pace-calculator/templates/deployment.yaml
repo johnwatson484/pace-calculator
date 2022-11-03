@@ -2,17 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ quote .Values.name }}
-  labels: {{ include "pace-calculator.labels" . | trimSuffix "\n" | indent 2 }}
+  labels: 
+    {{- include "pace-calculator.labels" . | nindent 4 }}
 spec:
   replicas: {{ .Values.deployment.replicas }}
   minReadySeconds: {{ .Values.deployment.minReadySeconds }}
   strategy: {}
   selector:
     matchLabels:
-      {{- include "pace-calculator.labels" . | nindent 6 }}
+      {{- include "pace-calculator.selector-labels" . | nindent 6 }}
   template:
     metadata:
-      labels: {{ include "pace-calculator.labels" . | trimSuffix "\n" | indent 6 }}
+      labels: 
+        {{- include "pace-calculator.labels" . | nindent 8 }}
       annotations:
         redeployOnChange: {{ quote .Values.deployment.redeployOnChange }}
     spec:

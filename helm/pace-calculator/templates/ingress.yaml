@@ -2,7 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ quote .Values.name }}
-  labels: {{ include "pace-calculator.labels" . | trimSuffix "\n" | indent 2 }}
+  labels: 
+    {{- include "pace-calculator.labels" . | nindent 4 }}
   annotations:
     kubernetes.io/ingress.class: "nginx"
     {{- if .Values.ingress.host }}
