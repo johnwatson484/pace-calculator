@@ -17,7 +17,7 @@ container:
 
 ingress:
   class: nginx
-  host:
+  host: pace-calculator.lynxmagnus.com
   certIssuer: letsencrypt
 
 deployment:

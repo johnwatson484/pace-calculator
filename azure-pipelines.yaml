@@ -19,5 +19,4 @@ extends:
     framework: net
     deploy: true
     namespace: pace-calculator
-    hasSecureHelmValuesFile: true
 
