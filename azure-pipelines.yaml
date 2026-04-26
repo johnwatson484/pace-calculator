@@ -17,7 +17,7 @@ extends:
     name: pace-calculator
     project: PaceCalculator
     framework: net
-    deploy: true
+    deploy: false
     namespace: pace-calculator
     sonarcloud: false
 
